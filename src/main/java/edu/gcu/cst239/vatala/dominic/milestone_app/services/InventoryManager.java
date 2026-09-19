@@ -188,64 +188,134 @@ public class InventoryManager implements InventoryService {
         return matches;
     }
 
-    /**
-     * Adds an inventory item.
-     * This operation is implemented in the inventory CRUD branch.
-     *
-     * @param item the inventory item to add
-     * @return false until this operation is implemented
-     */
-    @Override
-    public boolean addInventoryItem(InventoryItem item) {
+   /**
+ * Adds a new inventory item when its product identifier
+ * does not already exist.
+ *
+ * @param item the inventory item to add
+ * @return true if the item was added, otherwise false
+ */
+@Override
+public boolean addInventoryItem(InventoryItem item) {
+
+    if (item == null || item.getProduct() == null) {
         return false;
     }
 
-    /**
-     * Updates existing product information.
-     * This operation is implemented in the inventory CRUD branch.
-     *
-     * @param updatedProduct the updated product
-     * @return false until this operation is implemented
-     */
-    @Override
-    public boolean updateProduct(Product updatedProduct) {
-        return false;
-    }
-
-    /**
-     * Updates an inventory quantity.
-     * This operation is implemented in the inventory CRUD branch.
-     *
-     * @param productId the product identifier
-     * @param quantityInStock the new quantity
-     * @return false until this operation is implemented
-     */
-    @Override
-    public boolean updateQuantity(
-            int productId,
-            int quantityInStock) {
+    if (getInventoryItemByProductId(
+            item.getProduct().getId()) != null) {
 
         return false;
     }
 
+    return inventory.add(item);
+}
+
     /**
-     * Removes an inventory item by product identifier.
-     * This operation is implemented in the inventory CRUD branch.
-     *
-     * @param productId the product identifier
-     * @return false until this operation is implemented
-     */
-    @Override
-    public boolean removeProductById(int productId) {
+ * Replaces the product information for an existing
+ * inventory item while preserving its quantity.
+ *
+ * @param updatedProduct the updated product
+ * @return true if the product was updated, otherwise false
+ */
+@Override
+public boolean updateProduct(Product updatedProduct) {
+
+    if (updatedProduct == null) {
         return false;
     }
 
-    /**
-     * Clears all inventory.
-     * This operation is implemented in the inventory CRUD branch.
-     */
-    @Override
-    public void clearInventory() {
-        // Placeholder for Branch 7.
+    for (int index = 0; index < inventory.size(); index++) {
+
+        InventoryItem currentItem =
+                inventory.get(index);
+
+        if (currentItem.getProduct().getId()
+                == updatedProduct.getId()) {
+
+            InventoryItem updatedItem =
+                    new InventoryItem(
+                            updatedProduct,
+                            currentItem.getQuantityInStock());
+
+            inventory.set(index, updatedItem);
+
+            return true;
+        }
     }
+
+    return false;
+}
+
+
+    /**
+ * Changes the quantity of an existing inventory item.
+ *
+ * @param productId the product identifier
+ * @param quantityInStock the new inventory quantity
+ * @return true if the quantity was updated, otherwise false
+ */
+@Override
+public boolean updateQuantity(
+        int productId,
+        int quantityInStock) {
+
+    if (quantityInStock < 0) {
+        return false;
+    }
+
+    InventoryItem item =
+            getInventoryItemByProductId(productId);
+
+    if (item == null) {
+        return false;
+    }
+
+    int currentQuantity =
+            item.getQuantityInStock();
+
+    if (quantityInStock == currentQuantity) {
+        return true;
+    }
+
+    if (quantityInStock > currentQuantity) {
+
+        item.increaseQuantity(
+                quantityInStock - currentQuantity);
+
+        return true;
+    }
+
+    return item.decreaseQuantity(
+            currentQuantity - quantityInStock);
+}
+
+
+   /**
+ * Removes an inventory item using its product identifier.
+ *
+ * @param productId the product identifier
+ * @return true if the item was removed, otherwise false
+ */
+@Override
+public boolean removeProductById(int productId) {
+
+    InventoryItem item =
+            getInventoryItemByProductId(productId);
+
+    if (item == null) {
+        return false;
+    }
+
+    return inventory.remove(item);
+}
+
+
+    /**
+ * Removes every inventory item.
+ */
+@Override
+public void clearInventory() {
+    inventory.clear();
+}
 }
