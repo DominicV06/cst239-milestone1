@@ -243,4 +243,10 @@ public class InputUtilities {
 
         return list;
     }
+    /**
+ * Creates an input utility for console-based user input.
+ */
+public InputUtilities() {
+}
+
 }

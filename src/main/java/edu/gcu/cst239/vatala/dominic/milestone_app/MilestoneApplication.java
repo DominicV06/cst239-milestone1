@@ -8,6 +8,12 @@ package edu.gcu.cst239.vatala.dominic.milestone_app;
  * @version 1.0
  */
 public class MilestoneApplication {
+    /**
+ * Creates the milestone application entry-point object.
+ */
+public MilestoneApplication() {
+}
+
 
     /**
      * Starts the Milestone 1 application.
