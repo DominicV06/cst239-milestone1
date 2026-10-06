@@ -64,11 +64,9 @@ public class CustomerActions {
                     break;
 
                 case 2:
-                    System.out.println(
-                            "You chose to search for a product "
-                                    + "by name or description.");
-                    showPlaceholder();
+                    searchProducts();
                     break;
+      
 
                 case 3:
                     System.out.println(
@@ -169,6 +167,72 @@ public class CustomerActions {
                     "There are currently no products available.");
         }
     }
+    /**
+ * Searches available products by name or description.
+ */
+private void searchProducts() {
+
+    System.out.println();
+    System.out.println("Search Products:");
+    System.out.println("1. Search by product name");
+    System.out.println("2. Search by product description");
+
+    int choice =
+            input.readInt(
+                    "Choose a search option:",
+                    1,
+                    2);
+
+    String searchTerm =
+            input.readString(
+                    "Enter search text:");
+
+    List<InventoryItem> matches;
+
+    if (choice == 1) {
+        matches =
+                inventoryService
+                        .searchProductsByName(searchTerm);
+    } else {
+        matches =
+                inventoryService
+                        .searchProductsByDescription(searchTerm);
+    }
+
+    if (matches.isEmpty()) {
+        System.out.println(
+                "No matching products were found.");
+        return;
+    }
+
+    System.out.println();
+    System.out.println("Search Results:");
+    System.out.println("---------------");
+
+    for (InventoryItem item : matches) {
+
+        Product product = item.getProduct();
+
+        System.out.println(
+                "ID: " + product.getId());
+
+        System.out.println(
+                "Name: " + product.getName());
+
+        System.out.println(
+                "Description: "
+                        + product.getDescription());
+
+        if (item.getQuantityInStock() > 0) {
+            System.out.println("Availability: In Stock");
+        } else {
+            System.out.println("Availability: Out of Stock");
+        }
+
+        System.out.println();
+    }
+}
+
 
     /**
      * Displays one product that is available for purchase.
