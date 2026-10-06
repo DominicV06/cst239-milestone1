@@ -22,6 +22,28 @@ public interface InventoryService {
      */
     List<InventoryItem> getAllInventoryItems();
 
+        /**
+     * Returns a copy of the inventory sorted by product name.
+     *
+     * @return inventory items sorted by name
+     */
+    List<InventoryItem> getInventoryItemsSortedByName();
+
+    /**
+     * Returns a copy of the inventory sorted by manufacture date.
+     *
+     * @return inventory items sorted by manufacture date
+     */
+    List<InventoryItem> getInventoryItemsSortedByDate();
+
+    /**
+     * Returns a copy of the inventory sorted by product price.
+     *
+     * @return inventory items sorted by price
+     */
+    List<InventoryItem> getInventoryItemsSortedByPrice();
+    
+
     /**
      * Finds an inventory item using its product identifier.
      *
