@@ -4,22 +4,27 @@ package edu.gcu.cst239.vatala.dominic.milestone_app.services;
  * Represents the storefront application and provides access
  * to the application's shared services.
  *
- * StoreFront does not directly manage inventory. Inventory
- * operations are delegated to InventoryManager through the
- * InventoryService interface.
+ * StoreFront owns one shared inventory service and one shared
+ * cart service. Inventory and cart operations are delegated
+ * through their service interfaces.
  *
  * @author Dominic Vatala
- * @version 1.0
+ * @version 2.0
  */
 public class StoreFront {
 
     private final InventoryService inventoryManager;
+    private final CartService cartService;
 
     /**
-     * Creates the storefront and its required inventory service.
+     * Creates the storefront and its required shared services.
      */
     public StoreFront() {
+
         inventoryManager = new InventoryManager();
+
+        cartService =
+                new ShoppingCart(inventoryManager);
     }
 
     /**
@@ -29,5 +34,14 @@ public class StoreFront {
      */
     public InventoryService getInventoryManager() {
         return inventoryManager;
+    }
+
+    /**
+     * Returns the shared customer shopping cart service.
+     *
+     * @return the shared cart service
+     */
+    public CartService getCartService() {
+        return cartService;
     }
 }

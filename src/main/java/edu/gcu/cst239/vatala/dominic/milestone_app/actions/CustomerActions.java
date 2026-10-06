@@ -7,6 +7,8 @@ import edu.gcu.cst239.vatala.dominic.milestone_app.models.Product;
 import edu.gcu.cst239.vatala.dominic.milestone_app.services.InventoryService;
 import edu.gcu.cst239.vatala.dominic.milestone_app.services.StoreFront;
 import edu.gcu.cst239.vatala.dominic.milestone_app.util.InputUtilities;
+import edu.gcu.cst239.vatala.dominic.milestone_app.services.CartService;
+
 
 /**
  * Provides the menu and actions available to customers.
@@ -20,6 +22,8 @@ public class CustomerActions {
 
     private final InventoryService inventoryService;
     private final InputUtilities input;
+    private final CartService cartService;
+
 
     /**
      * Creates the customer actions controller.
@@ -27,9 +31,11 @@ public class CustomerActions {
      * @param store the shared storefront application
      */
     public CustomerActions(StoreFront store) {
-        inventoryService = store.getInventoryManager();
-        input = new InputUtilities();
-    }
+    inventoryService = store.getInventoryManager();
+    cartService = store.getCartService();
+    input = new InputUtilities();
+}
+
 
     /**
      * Displays the customer menu and processes customer selections.
@@ -69,9 +75,7 @@ public class CustomerActions {
       
 
                 case 3:
-                    System.out.println(
-                            "You chose to add a product to the cart.");
-                    showPlaceholder();
+                    addProductToCart();
                     break;
 
                 case 4:
@@ -232,6 +236,82 @@ private void searchProducts() {
         System.out.println();
     }
 }
+
+/**
+ * Adds an available product to the customer's shopping cart.
+ */
+private void addProductToCart() {
+
+    System.out.println();
+    System.out.println("Add Product to Cart:");
+
+    List<InventoryItem> inventory =
+            inventoryService.getAllInventoryItems();
+
+    boolean availableProductFound = false;
+
+    for (InventoryItem item : inventory) {
+
+        if (item.getQuantityInStock() > 0) {
+            displayInventoryItem(item);
+            availableProductFound = true;
+        }
+    }
+
+    if (!availableProductFound) {
+        System.out.println(
+                "There are currently no products available.");
+        return;
+    }
+
+    int productId =
+            input.readInt(
+                    "Enter the product ID to add:");
+
+    InventoryItem inventoryItem =
+            inventoryService.getInventoryItemByProductId(
+                    productId);
+
+    if (inventoryItem == null) {
+        System.out.println(
+                "No product was found with that ID.");
+        return;
+    }
+
+    if (inventoryItem.getQuantityInStock() <= 0) {
+        System.out.println(
+                "That product is currently out of stock.");
+        return;
+    }
+
+    int quantity =
+            input.readInt(
+                    "Enter quantity:",
+                    1,
+                    Integer.MAX_VALUE);
+
+    if (quantity
+            > inventoryItem.getQuantityInStock()) {
+
+        System.out.println(
+                "Requested quantity exceeds available stock.");
+        return;
+    }
+
+    boolean added =
+            cartService.addProduct(
+                    inventoryItem.getProduct(),
+                    quantity);
+
+    if (added) {
+        System.out.println(
+                "Product added to cart successfully.");
+    } else {
+        System.out.println(
+                "Product could not be added to the cart.");
+    }
+}
+
 
 
     /**
