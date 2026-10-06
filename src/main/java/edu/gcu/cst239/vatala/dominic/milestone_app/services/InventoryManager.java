@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Comparator;
 
 import edu.gcu.cst239.vatala.dominic.milestone_app.models.InventoryItem;
 import edu.gcu.cst239.vatala.dominic.milestone_app.models.Product;
@@ -100,6 +101,68 @@ public class InventoryManager implements InventoryService {
     public List<InventoryItem> getAllInventoryItems() {
         return List.copyOf(inventory);
     }
+
+        /**
+     * Returns a copy of the inventory sorted by product name.
+     * The original inventory order is not changed.
+     *
+     * @return inventory items sorted by product name
+     */
+    @Override
+    public List<InventoryItem> getInventoryItemsSortedByName() {
+
+        List<InventoryItem> sortedInventory =
+                new ArrayList<>(inventory);
+
+        sortedInventory.sort(
+                Comparator.comparing(
+                        item -> item.getProduct()
+                                .getName()
+                                .toLowerCase(Locale.ROOT)));
+
+        return List.copyOf(sortedInventory);
+    }
+
+    /**
+     * Returns a copy of the inventory sorted by manufacture date.
+     * The original inventory order is not changed.
+     *
+     * @return inventory items sorted by manufacture date
+     */
+    @Override
+    public List<InventoryItem> getInventoryItemsSortedByDate() {
+
+        List<InventoryItem> sortedInventory =
+                new ArrayList<>(inventory);
+
+        sortedInventory.sort(
+                Comparator.comparing(
+                        item -> item.getProduct()
+                                .getDateOfManufacture()));
+
+        return List.copyOf(sortedInventory);
+    }
+
+    /**
+     * Returns a copy of the inventory sorted by product price.
+     * The original inventory order is not changed.
+     *
+     * @return inventory items sorted by product price
+     */
+    @Override
+    public List<InventoryItem> getInventoryItemsSortedByPrice() {
+
+        List<InventoryItem> sortedInventory =
+                new ArrayList<>(inventory);
+
+        sortedInventory.sort(
+                Comparator.comparingDouble(
+                        item -> item.getProduct()
+                                .getPrice()));
+
+        return List.copyOf(sortedInventory);
+    }
+    
 
     /**
      * Finds an inventory item by its product identifier.
