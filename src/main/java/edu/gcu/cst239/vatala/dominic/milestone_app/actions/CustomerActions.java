@@ -89,10 +89,8 @@ public class CustomerActions {
                      break;
 
                 case 6:
-                    System.out.println(
-                            "You chose to checkout.");
-                    showPlaceholder();
-                    break;
+                     checkout();
+                     break;
 
                 case 0:
                     exitRequested = true;
@@ -420,6 +418,82 @@ private void viewCart() {
         updateCartQuantity();
     }
 }
+
+/**
+ * Displays the final cart, confirms the purchase,
+ * and completes checkout when inventory is available.
+ */
+private void checkout() {
+
+    System.out.println();
+    System.out.println("Checkout:");
+    System.out.println("---------");
+
+    List<CartItem> cartItems =
+            cartService.getAllCartItems();
+
+    if (cartItems.isEmpty()) {
+        System.out.println(
+                "Your cart is currently empty.");
+        return;
+    }
+
+    for (CartItem cartItem : cartItems) {
+
+        Product product =
+                cartItem.getProduct();
+
+        System.out.println(
+                "ID: " + product.getId());
+
+        System.out.println(
+                "Name: " + product.getName());
+
+        System.out.println(
+                "Quantity: "
+                        + cartItem.getQuantity());
+
+        System.out.printf(
+                "Line Subtotal: $%.2f%n",
+                cartItem.getSubtotal());
+
+        System.out.println();
+    }
+
+    System.out.printf(
+            "Final Total: $%.2f%n",
+            cartService.getCartTotal());
+
+    boolean confirmed =
+        input.readBoolean(
+                "Complete purchase?");
+                
+    if (!confirmed) {
+        System.out.println(
+                "Checkout cancelled.");
+        return;
+    }
+
+    boolean completed =
+            cartService.checkout();
+
+    if (completed) {
+
+        System.out.println(
+                "Checkout completed successfully.");
+
+        System.out.println(
+                "Thank you for your purchase.");
+
+    } else {
+
+        System.out.println(
+                "Checkout could not be completed. "
+                        + "One or more products may no longer "
+                        + "have enough stock.");
+    }
+}
+
 
 /**
  * Updates the quantity of one item in the shopping cart.
