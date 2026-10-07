@@ -79,9 +79,7 @@ public class CustomerActions {
                     break;
 
                 case 4:
-                    System.out.println(
-                            "You chose to remove a product from the cart.");
-                    showPlaceholder();
+                    removeProductFromCart();
                     break;
 
                 case 5:
@@ -311,6 +309,54 @@ private void addProductToCart() {
                 "Product could not be added to the cart.");
     }
 }
+
+/**
+ * Removes a product from the customer's shopping cart.
+ */
+private void removeProductFromCart() {
+
+    System.out.println();
+    System.out.println("Remove Product from Cart:");
+
+    if (cartService.getAllCartItems().isEmpty()) {
+        System.out.println("Your cart is currently empty.");
+        return;
+    }
+
+    for (var cartItem : cartService.getAllCartItems()) {
+
+        Product product = cartItem.getProduct();
+
+        System.out.println(
+                "ID: " + product.getId());
+
+        System.out.println(
+                "Name: " + product.getName());
+
+        System.out.println(
+                "Quantity in Cart: "
+                        + cartItem.getQuantity());
+
+        System.out.println();
+    }
+
+    int productId =
+            input.readInt(
+                    "Enter the product ID to remove:");
+
+    boolean removed =
+            cartService.removeProductFromCart(
+                    productId);
+
+    if (removed) {
+        System.out.println(
+                "Product removed from cart successfully.");
+    } else {
+        System.out.println(
+                "No matching product was found in the cart.");
+    }
+}
+
 
 
 
