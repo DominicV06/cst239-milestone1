@@ -8,6 +8,8 @@ import edu.gcu.cst239.vatala.dominic.milestone_app.services.InventoryService;
 import edu.gcu.cst239.vatala.dominic.milestone_app.services.StoreFront;
 import edu.gcu.cst239.vatala.dominic.milestone_app.util.InputUtilities;
 import edu.gcu.cst239.vatala.dominic.milestone_app.services.CartService;
+import edu.gcu.cst239.vatala.dominic.milestone_app.models.CartItem;
+
 
 
 /**
@@ -83,10 +85,8 @@ public class CustomerActions {
                     break;
 
                 case 5:
-                    System.out.println(
-                            "You chose to view the cart.");
-                    showPlaceholder();
-                    break;
+                     viewCart();
+                     break;
 
                 case 6:
                     System.out.println(
@@ -357,6 +357,128 @@ private void removeProductFromCart() {
     }
 }
 
+/**
+ * Displays the current shopping cart, line subtotals,
+ * total price, and allows one quantity update.
+ */
+private void viewCart() {
+
+    System.out.println();
+    System.out.println("Shopping Cart:");
+    System.out.println("--------------");
+
+    List<CartItem> cartItems =
+            cartService.getAllCartItems();
+
+    if (cartItems.isEmpty()) {
+        System.out.println(
+                "Your cart is currently empty.");
+        return;
+    }
+
+    for (CartItem cartItem : cartItems) {
+
+        Product product =
+                cartItem.getProduct();
+
+        System.out.println(
+                "ID: " + product.getId());
+
+        System.out.println(
+                "Name: " + product.getName());
+
+        System.out.println(
+                "Quantity: "
+                        + cartItem.getQuantity());
+
+        System.out.printf(
+                "Price: $%.2f%n",
+                product.getPrice());
+
+        System.out.printf(
+                "Line Subtotal: $%.2f%n",
+                cartItem.getSubtotal());
+
+        System.out.println();
+    }
+
+    System.out.printf(
+            "Cart Total: $%.2f%n",
+            cartService.getCartTotal());
+
+    System.out.println();
+    System.out.println("1. Keep current quantities");
+    System.out.println("2. Update a cart quantity");
+
+    int choice =
+            input.readInt(
+                    "Choose an option:",
+                    1,
+                    2);
+
+    if (choice == 2) {
+        updateCartQuantity();
+    }
+}
+
+/**
+ * Updates the quantity of one item in the shopping cart.
+ * A quantity of zero removes the item from the cart.
+ */
+private void updateCartQuantity() {
+
+    int productId =
+            input.readInt(
+                    "Enter the product ID to update:");
+
+    boolean found = false;
+
+    for (CartItem cartItem :
+            cartService.getAllCartItems()) {
+
+        if (cartItem.getProduct().getId()
+                == productId) {
+
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        System.out.println(
+                "No matching product was found in the cart.");
+        return;
+    }
+
+    int quantity =
+            input.readInt(
+                    "Enter the new quantity "
+                            + "(0 removes the item):",
+                    0,
+                    Integer.MAX_VALUE);
+
+    boolean updated =
+            cartService.updateQuantity(
+                    productId,
+                    quantity);
+
+    if (updated) {
+
+        if (quantity == 0) {
+            System.out.println(
+                    "Product removed from cart successfully.");
+        } else {
+            System.out.println(
+                    "Cart quantity updated successfully.");
+        }
+
+    } else {
+
+        System.out.println(
+                "Cart quantity could not be updated. "
+                        + "Check available stock.");
+    }
+}
 
 
 
