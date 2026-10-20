@@ -411,6 +411,153 @@ void updatesInventoryQuantity() {
     assertEquals(1, manager.getAllInventoryItems().size());
 }
 
+@Test
+void sortsInventoryByProductName() {
+
+    // Arrange
+    InventoryItem mouse = createTestItem(
+            902, "Mouse", "Wireless mouse", 24.99, 8);
+
+    InventoryItem monitor = createTestItem(
+            903, "Monitor", "LED monitor", 179.99, 3);
+
+    InventoryItem keyboard = createTestItem(
+            901, "Keyboard", "Mechanical keyboard", 49.99, 5);
+
+    InventoryManager manager = new InventoryManager(
+            List.of(mouse, monitor, keyboard));
+
+    // Act
+    List<InventoryItem> sortedItems =
+            manager.getInventoryItemsSortedByName();
+
+    // Assert
+    assertEquals(3, sortedItems.size());
+    assertEquals("Keyboard", sortedItems.get(0).getProduct().getName());
+    assertEquals("Monitor", sortedItems.get(1).getProduct().getName());
+    assertEquals("Mouse", sortedItems.get(2).getProduct().getName());
+}
+
+@Test
+void sortsInventoryByPrice() {
+
+    // Arrange
+    InventoryItem monitor = createTestItem(
+            903, "Monitor", "LED monitor", 179.99, 3);
+
+    InventoryItem keyboard = createTestItem(
+            901, "Keyboard", "Mechanical keyboard", 49.99, 5);
+
+    InventoryItem mouse = createTestItem(
+            902, "Mouse", "Wireless mouse", 24.99, 8);
+
+    InventoryManager manager = new InventoryManager(
+            List.of(monitor, keyboard, mouse));
+
+    // Act
+    List<InventoryItem> sortedItems =
+            manager.getInventoryItemsSortedByPrice();
+
+    // Assert
+    assertEquals(3, sortedItems.size());
+
+    assertEquals(902, sortedItems.get(0).getProduct().getId());
+    assertEquals(901, sortedItems.get(1).getProduct().getId());
+    assertEquals(903, sortedItems.get(2).getProduct().getId());
+
+    assertEquals(24.99, sortedItems.get(0).getProduct().getPrice(), 0.001);
+    assertEquals(49.99, sortedItems.get(1).getProduct().getPrice(), 0.001);
+    assertEquals(179.99, sortedItems.get(2).getProduct().getPrice(), 0.001);
+}
+
+@Test
+void sortsInventoryByManufactureDate() {
+
+    // Arrange
+    Product keyboard = Product.builder()
+            .id(901)
+            .name("Keyboard")
+            .description("Mechanical keyboard")
+            .dateOfManufacture(LocalDate.of(2025, 6, 15))
+            .price(49.99)
+            .category("peripherals")
+            .build();
+
+    Product mouse = Product.builder()
+            .id(902)
+            .name("Mouse")
+            .description("Wireless mouse")
+            .dateOfManufacture(LocalDate.of(2026, 3, 10))
+            .price(24.99)
+            .category("peripherals")
+            .build();
+
+    Product monitor = Product.builder()
+            .id(903)
+            .name("Monitor")
+            .description("LED monitor")
+            .dateOfManufacture(LocalDate.of(2024, 11, 20))
+            .price(179.99)
+            .category("peripherals")
+            .build();
+
+    InventoryManager manager = new InventoryManager(
+            List.of(
+                    new InventoryItem(keyboard, 5),
+                    new InventoryItem(mouse, 8),
+                    new InventoryItem(monitor, 3)
+            ));
+
+    // Act
+    List<InventoryItem> sortedItems =
+            manager.getInventoryItemsSortedByDate();
+
+    // Assert
+    assertEquals(3, sortedItems.size());
+
+    assertEquals(903, sortedItems.get(0).getProduct().getId());
+    assertEquals(901, sortedItems.get(1).getProduct().getId());
+    assertEquals(902, sortedItems.get(2).getProduct().getId());
+}
+
+@Test
+void sortingDoesNotChangeOriginalInventoryOrder() {
+
+    // Arrange
+    InventoryItem mouse = createTestItem(
+            902, "Mouse", "Wireless mouse", 24.99, 8);
+
+    InventoryItem monitor = createTestItem(
+            903, "Monitor", "LED monitor", 179.99, 3);
+
+    InventoryItem keyboard = createTestItem(
+            901, "Keyboard", "Mechanical keyboard", 49.99, 5);
+
+    InventoryManager manager = new InventoryManager(
+            List.of(mouse, monitor, keyboard));
+
+    // Act
+    List<InventoryItem> sortedItems =
+            manager.getInventoryItemsSortedByName();
+
+    List<InventoryItem> originalItems =
+            manager.getAllInventoryItems();
+
+    // Assert
+    assertEquals(3, sortedItems.size());
+    assertEquals(3, originalItems.size());
+
+    // Verify the sorted list is alphabetical.
+    assertEquals(901, sortedItems.get(0).getProduct().getId());
+    assertEquals(903, sortedItems.get(1).getProduct().getId());
+    assertEquals(902, sortedItems.get(2).getProduct().getId());
+
+    // Verify the original inventory order is unchanged.
+    assertEquals(902, originalItems.get(0).getProduct().getId());
+    assertEquals(903, originalItems.get(1).getProduct().getId());
+    assertEquals(901, originalItems.get(2).getProduct().getId());
+}
+
 
 
 
