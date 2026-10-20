@@ -29,7 +29,23 @@ public class InventoryManager implements InventoryService {
         inventory = new ArrayList<>();
         initializeInventory();
     }
+    
+/**
+ * Creates an inventory manager using a provided collection of items.
+ * Copies the collection so each manager has its own inventory list.
+ *
+ * @param initialInventory the items used to initialize the inventory
+ * @throws IllegalArgumentException if initialInventory is null
+ */
+public InventoryManager(List<InventoryItem> initialInventory) {
+    if (initialInventory == null) {
+        throw new IllegalArgumentException("Initial inventory cannot be null.");
+    }
 
+    this.inventory = new ArrayList<>(initialInventory);
+}
+
+    
     /**
      * Creates the starting inventory for the technology store.
      */
