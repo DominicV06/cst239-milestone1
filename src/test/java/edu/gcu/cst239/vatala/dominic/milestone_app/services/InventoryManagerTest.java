@@ -2,6 +2,7 @@
 package edu.gcu.cst239.vatala.dominic.milestone_app.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -194,6 +195,220 @@ void searchesProductsWithoutCaseSensitivity() {
 
     assertEquals(1, descriptionResults.size());
     assertEquals(902, descriptionResults.get(0).getProduct().getId());
+}
+
+@Test
+void addsNewInventoryItem() {
+
+    // Arrange
+    InventoryManager manager = new InventoryManager(List.of());
+
+    InventoryItem keyboard = createTestItem(
+            901, "Test Keyboard", "Mechanical gaming keyboard", 49.99, 5);
+
+    // Act
+    boolean added = manager.addInventoryItem(keyboard);
+
+    // Assert
+    assertTrue(added);
+    assertEquals(1, manager.getAllInventoryItems().size());
+
+    InventoryItem savedItem = manager.getInventoryItemByProductId(901);
+
+    assertNotNull(savedItem);
+    assertEquals(901, savedItem.getProduct().getId());
+    assertEquals("Test Keyboard", savedItem.getProduct().getName());
+    assertEquals(5, savedItem.getQuantityInStock());
+}
+
+@Test
+void rejectsDuplicateProductId() {
+
+    // Arrange
+    InventoryItem keyboard = createTestItem(
+            901, "Test Keyboard", "Mechanical gaming keyboard", 49.99, 5);
+
+    InventoryItem duplicateKeyboard = createTestItem(
+            901, "Another Keyboard", "Different keyboard", 79.99, 10);
+
+    InventoryManager manager = new InventoryManager(
+            List.of(keyboard));
+
+    // Act
+    boolean added = manager.addInventoryItem(duplicateKeyboard);
+
+    // Assert
+    assertFalse(added);
+    assertEquals(1, manager.getAllInventoryItems().size());
+
+    InventoryItem savedItem = manager.getInventoryItemByProductId(901);
+
+    assertNotNull(savedItem);
+    assertEquals("Test Keyboard", savedItem.getProduct().getName());
+    assertEquals(5, savedItem.getQuantityInStock());
+}
+
+@Test
+void updatesProductWithoutChangingQuantity() {
+
+    // Arrange
+    InventoryItem keyboard = createTestItem(
+            901, "Test Keyboard", "Mechanical gaming keyboard", 49.99, 5);
+
+    InventoryManager manager = new InventoryManager(
+            List.of(keyboard));
+
+    Product updatedProduct = Product.builder()
+            .id(901)
+            .name("Updated Keyboard")
+            .description("Updated mechanical keyboard")
+            .dateOfManufacture(LocalDate.of(2026, 2, 10))
+            .price(59.99)
+            .category("peripherals")
+            .build();
+
+    // Act
+    boolean updated = manager.updateProduct(updatedProduct);
+
+    // Assert
+    assertTrue(updated);
+
+    InventoryItem savedItem = manager.getInventoryItemByProductId(901);
+
+    assertNotNull(savedItem);
+    assertEquals(901, savedItem.getProduct().getId());
+    assertEquals("Updated Keyboard", savedItem.getProduct().getName());
+    assertEquals("Updated mechanical keyboard",
+            savedItem.getProduct().getDescription());
+    assertEquals(59.99, savedItem.getProduct().getPrice(), 0.001);
+    assertEquals(5, savedItem.getQuantityInStock());
+    assertEquals(1, manager.getAllInventoryItems().size());
+}
+
+@Test
+void returnsFalseWhenUpdatingUnknownProduct() {
+
+    // Arrange
+    InventoryItem keyboard = createTestItem(
+            901, "Test Keyboard", "Mechanical gaming keyboard", 49.99, 5);
+
+    InventoryManager manager = new InventoryManager(
+            List.of(keyboard));
+
+    Product unknownProduct = Product.builder()
+            .id(999)
+            .name("Unknown Product")
+            .description("Product not in inventory")
+            .dateOfManufacture(LocalDate.of(2026, 3, 10))
+            .price(39.99)
+            .category("peripherals")
+            .build();
+
+    // Act
+    boolean updated = manager.updateProduct(unknownProduct);
+
+    // Assert
+    assertFalse(updated);
+    assertEquals(1, manager.getAllInventoryItems().size());
+    assertNull(manager.getInventoryItemByProductId(999));
+
+    InventoryItem savedItem = manager.getInventoryItemByProductId(901);
+
+    assertNotNull(savedItem);
+    assertEquals("Test Keyboard", savedItem.getProduct().getName());
+    assertEquals(5, savedItem.getQuantityInStock());
+}
+
+@Test
+void removesExistingInventoryItem() {
+
+    // Arrange
+    InventoryItem keyboard = createTestItem(
+            901, "Test Keyboard", "Mechanical gaming keyboard", 49.99, 5);
+
+    InventoryItem mouse = createTestItem(
+            902, "Test Mouse", "Wireless optical mouse", 24.99, 8);
+
+    InventoryManager manager = new InventoryManager(
+            List.of(keyboard, mouse));
+
+    // Act
+    boolean removed = manager.removeProductById(901);
+
+    // Assert
+    assertTrue(removed);
+    assertEquals(1, manager.getAllInventoryItems().size());
+    assertNull(manager.getInventoryItemByProductId(901));
+
+    InventoryItem remainingItem =
+            manager.getInventoryItemByProductId(902);
+
+    assertNotNull(remainingItem);
+    assertEquals("Test Mouse", remainingItem.getProduct().getName());
+    assertEquals(8, remainingItem.getQuantityInStock());
+}
+
+@Test
+void returnsFalseWhenRemovingUnknownProduct() {
+
+    // Arrange
+    InventoryItem keyboard = createTestItem(
+            901, "Test Keyboard", "Mechanical gaming keyboard", 49.99, 5);
+
+    InventoryItem mouse = createTestItem(
+            902, "Test Mouse", "Wireless optical mouse", 24.99, 8);
+
+    InventoryManager manager = new InventoryManager(
+            List.of(keyboard, mouse));
+
+    // Act
+    boolean removed = manager.removeProductById(999);
+
+    // Assert
+    assertFalse(removed);
+    assertEquals(2, manager.getAllInventoryItems().size());
+
+    InventoryItem savedKeyboard =
+            manager.getInventoryItemByProductId(901);
+
+    InventoryItem savedMouse =
+            manager.getInventoryItemByProductId(902);
+
+    assertNotNull(savedKeyboard);
+    assertNotNull(savedMouse);
+
+    assertEquals("Test Keyboard", savedKeyboard.getProduct().getName());
+    assertEquals(5, savedKeyboard.getQuantityInStock());
+
+    assertEquals("Test Mouse", savedMouse.getProduct().getName());
+    assertEquals(8, savedMouse.getQuantityInStock());
+}
+
+@Test
+void updatesInventoryQuantity() {
+
+    // Arrange
+    InventoryItem keyboard = createTestItem(
+            901, "Test Keyboard", "Mechanical gaming keyboard", 49.99, 5);
+
+    InventoryManager manager = new InventoryManager(
+            List.of(keyboard));
+
+    // Act
+    boolean updated = manager.updateQuantity(901, 12);
+
+    // Assert
+    assertTrue(updated);
+
+    InventoryItem savedItem =
+            manager.getInventoryItemByProductId(901);
+
+    assertNotNull(savedItem);
+    assertEquals(12, savedItem.getQuantityInStock());
+    assertEquals(901, savedItem.getProduct().getId());
+    assertEquals("Test Keyboard", savedItem.getProduct().getName());
+    assertEquals(49.99, savedItem.getProduct().getPrice(), 0.001);
+    assertEquals(1, manager.getAllInventoryItems().size());
 }
 
 
