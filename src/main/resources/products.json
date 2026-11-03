@@ -1,0 +1,802 @@
+﻿[
+    {
+        "id":  101,
+        "name":  "Standard Mechanical Keyboard",
+        "description":  "Technology accessory - Standard model of Mechanical Keyboard",
+        "dateOfManufacture":  "2025-01-01",
+        "price":  19.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  102,
+        "name":  "Standard Wireless Gaming Mouse",
+        "description":  "Technology accessory - Standard model of Wireless Gaming Mouse",
+        "dateOfManufacture":  "2025-01-04",
+        "price":  26.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  103,
+        "name":  "Standard USB-C Dock",
+        "description":  "Technology accessory - Standard model of USB-C Dock",
+        "dateOfManufacture":  "2025-01-07",
+        "price":  33.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  104,
+        "name":  "Standard Noise-Canceling Headset",
+        "description":  "Technology accessory - Standard model of Noise-Canceling Headset",
+        "dateOfManufacture":  "2025-01-10",
+        "price":  40.99,
+        "category":  "audio"
+    },
+    {
+        "id":  105,
+        "name":  "Standard Portable SSD",
+        "description":  "Technology accessory - Standard model of Portable SSD",
+        "dateOfManufacture":  "2025-01-13",
+        "price":  47.99,
+        "category":  "storage"
+    },
+    {
+        "id":  106,
+        "name":  "Standard Bluetooth Speaker",
+        "description":  "Technology accessory - Standard model of Bluetooth Speaker",
+        "dateOfManufacture":  "2025-01-16",
+        "price":  54.99,
+        "category":  "audio"
+    },
+    {
+        "id":  107,
+        "name":  "Standard USB-C Charging Hub",
+        "description":  "Technology accessory - Standard model of USB-C Charging Hub",
+        "dateOfManufacture":  "2025-01-19",
+        "price":  61.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  108,
+        "name":  "Standard Gaming Mouse Pad",
+        "description":  "Technology accessory - Standard model of Gaming Mouse Pad",
+        "dateOfManufacture":  "2025-01-22",
+        "price":  68.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  109,
+        "name":  "Standard External Hard Drive",
+        "description":  "Technology accessory - Standard model of External Hard Drive",
+        "dateOfManufacture":  "2025-01-25",
+        "price":  75.99,
+        "category":  "storage"
+    },
+    {
+        "id":  110,
+        "name":  "Standard Wireless Earbuds",
+        "description":  "Technology accessory - Standard model of Wireless Earbuds",
+        "dateOfManufacture":  "2025-01-28",
+        "price":  82.99,
+        "category":  "audio"
+    },
+    {
+        "id":  111,
+        "name":  "Standard Webcam",
+        "description":  "Technology accessory - Standard model of Webcam",
+        "dateOfManufacture":  "2025-01-31",
+        "price":  89.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  112,
+        "name":  "Standard USB Flash Drive",
+        "description":  "Technology accessory - Standard model of USB Flash Drive",
+        "dateOfManufacture":  "2025-02-03",
+        "price":  96.99,
+        "category":  "storage"
+    },
+    {
+        "id":  113,
+        "name":  "Standard Laptop Stand",
+        "description":  "Technology accessory - Standard model of Laptop Stand",
+        "dateOfManufacture":  "2025-02-06",
+        "price":  103.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  114,
+        "name":  "Standard Display Adapter",
+        "description":  "Technology accessory - Standard model of Display Adapter",
+        "dateOfManufacture":  "2025-02-09",
+        "price":  110.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  115,
+        "name":  "Standard Studio Headphones",
+        "description":  "Technology accessory - Standard model of Studio Headphones",
+        "dateOfManufacture":  "2025-02-12",
+        "price":  117.99,
+        "category":  "audio"
+    },
+    {
+        "id":  116,
+        "name":  "Standard Keyboard Wrist Rest",
+        "description":  "Technology accessory - Standard model of Keyboard Wrist Rest",
+        "dateOfManufacture":  "2025-02-15",
+        "price":  124.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  117,
+        "name":  "Standard Ethernet Adapter",
+        "description":  "Technology accessory - Standard model of Ethernet Adapter",
+        "dateOfManufacture":  "2025-02-18",
+        "price":  131.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  118,
+        "name":  "Standard Portable Microphone",
+        "description":  "Technology accessory - Standard model of Portable Microphone",
+        "dateOfManufacture":  "2025-02-21",
+        "price":  138.99,
+        "category":  "audio"
+    },
+    {
+        "id":  119,
+        "name":  "Standard Memory Card Reader",
+        "description":  "Technology accessory - Standard model of Memory Card Reader",
+        "dateOfManufacture":  "2025-02-24",
+        "price":  145.99,
+        "category":  "storage"
+    },
+    {
+        "id":  120,
+        "name":  "Standard USB-C Cable",
+        "description":  "Technology accessory - Standard model of USB-C Cable",
+        "dateOfManufacture":  "2025-02-27",
+        "price":  22.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  121,
+        "name":  "Plus Mechanical Keyboard",
+        "description":  "Technology accessory - Plus model of Mechanical Keyboard",
+        "dateOfManufacture":  "2025-03-02",
+        "price":  29.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  122,
+        "name":  "Plus Wireless Gaming Mouse",
+        "description":  "Technology accessory - Plus model of Wireless Gaming Mouse",
+        "dateOfManufacture":  "2025-03-05",
+        "price":  36.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  123,
+        "name":  "Plus USB-C Dock",
+        "description":  "Technology accessory - Plus model of USB-C Dock",
+        "dateOfManufacture":  "2025-03-08",
+        "price":  43.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  124,
+        "name":  "Plus Noise-Canceling Headset",
+        "description":  "Technology accessory - Plus model of Noise-Canceling Headset",
+        "dateOfManufacture":  "2025-03-11",
+        "price":  50.99,
+        "category":  "audio"
+    },
+    {
+        "id":  125,
+        "name":  "Plus Portable SSD",
+        "description":  "Technology accessory - Plus model of Portable SSD",
+        "dateOfManufacture":  "2025-03-14",
+        "price":  57.99,
+        "category":  "storage"
+    },
+    {
+        "id":  126,
+        "name":  "Plus Bluetooth Speaker",
+        "description":  "Technology accessory - Plus model of Bluetooth Speaker",
+        "dateOfManufacture":  "2025-03-17",
+        "price":  64.99,
+        "category":  "audio"
+    },
+    {
+        "id":  127,
+        "name":  "Plus USB-C Charging Hub",
+        "description":  "Technology accessory - Plus model of USB-C Charging Hub",
+        "dateOfManufacture":  "2025-03-20",
+        "price":  71.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  128,
+        "name":  "Plus Gaming Mouse Pad",
+        "description":  "Technology accessory - Plus model of Gaming Mouse Pad",
+        "dateOfManufacture":  "2025-03-23",
+        "price":  78.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  129,
+        "name":  "Plus External Hard Drive",
+        "description":  "Technology accessory - Plus model of External Hard Drive",
+        "dateOfManufacture":  "2025-03-26",
+        "price":  85.99,
+        "category":  "storage"
+    },
+    {
+        "id":  130,
+        "name":  "Plus Wireless Earbuds",
+        "description":  "Technology accessory - Plus model of Wireless Earbuds",
+        "dateOfManufacture":  "2025-03-29",
+        "price":  92.99,
+        "category":  "audio"
+    },
+    {
+        "id":  131,
+        "name":  "Plus Webcam",
+        "description":  "Technology accessory - Plus model of Webcam",
+        "dateOfManufacture":  "2025-04-01",
+        "price":  99.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  132,
+        "name":  "Plus USB Flash Drive",
+        "description":  "Technology accessory - Plus model of USB Flash Drive",
+        "dateOfManufacture":  "2025-04-04",
+        "price":  106.99,
+        "category":  "storage"
+    },
+    {
+        "id":  133,
+        "name":  "Plus Laptop Stand",
+        "description":  "Technology accessory - Plus model of Laptop Stand",
+        "dateOfManufacture":  "2025-04-07",
+        "price":  113.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  134,
+        "name":  "Plus Display Adapter",
+        "description":  "Technology accessory - Plus model of Display Adapter",
+        "dateOfManufacture":  "2025-04-10",
+        "price":  120.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  135,
+        "name":  "Plus Studio Headphones",
+        "description":  "Technology accessory - Plus model of Studio Headphones",
+        "dateOfManufacture":  "2025-04-13",
+        "price":  127.99,
+        "category":  "audio"
+    },
+    {
+        "id":  136,
+        "name":  "Plus Keyboard Wrist Rest",
+        "description":  "Technology accessory - Plus model of Keyboard Wrist Rest",
+        "dateOfManufacture":  "2025-04-16",
+        "price":  134.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  137,
+        "name":  "Plus Ethernet Adapter",
+        "description":  "Technology accessory - Plus model of Ethernet Adapter",
+        "dateOfManufacture":  "2025-04-19",
+        "price":  141.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  138,
+        "name":  "Plus Portable Microphone",
+        "description":  "Technology accessory - Plus model of Portable Microphone",
+        "dateOfManufacture":  "2025-04-22",
+        "price":  148.99,
+        "category":  "audio"
+    },
+    {
+        "id":  139,
+        "name":  "Plus Memory Card Reader",
+        "description":  "Technology accessory - Plus model of Memory Card Reader",
+        "dateOfManufacture":  "2025-04-25",
+        "price":  25.99,
+        "category":  "storage"
+    },
+    {
+        "id":  140,
+        "name":  "Plus USB-C Cable",
+        "description":  "Technology accessory - Plus model of USB-C Cable",
+        "dateOfManufacture":  "2025-04-28",
+        "price":  32.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  141,
+        "name":  "Pro Mechanical Keyboard",
+        "description":  "Technology accessory - Pro model of Mechanical Keyboard",
+        "dateOfManufacture":  "2025-05-01",
+        "price":  39.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  142,
+        "name":  "Pro Wireless Gaming Mouse",
+        "description":  "Technology accessory - Pro model of Wireless Gaming Mouse",
+        "dateOfManufacture":  "2025-05-04",
+        "price":  46.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  143,
+        "name":  "Pro USB-C Dock",
+        "description":  "Technology accessory - Pro model of USB-C Dock",
+        "dateOfManufacture":  "2025-05-07",
+        "price":  53.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  144,
+        "name":  "Pro Noise-Canceling Headset",
+        "description":  "Technology accessory - Pro model of Noise-Canceling Headset",
+        "dateOfManufacture":  "2025-05-10",
+        "price":  60.99,
+        "category":  "audio"
+    },
+    {
+        "id":  145,
+        "name":  "Pro Portable SSD",
+        "description":  "Technology accessory - Pro model of Portable SSD",
+        "dateOfManufacture":  "2025-05-13",
+        "price":  67.99,
+        "category":  "storage"
+    },
+    {
+        "id":  146,
+        "name":  "Pro Bluetooth Speaker",
+        "description":  "Technology accessory - Pro model of Bluetooth Speaker",
+        "dateOfManufacture":  "2025-05-16",
+        "price":  74.99,
+        "category":  "audio"
+    },
+    {
+        "id":  147,
+        "name":  "Pro USB-C Charging Hub",
+        "description":  "Technology accessory - Pro model of USB-C Charging Hub",
+        "dateOfManufacture":  "2025-05-19",
+        "price":  81.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  148,
+        "name":  "Pro Gaming Mouse Pad",
+        "description":  "Technology accessory - Pro model of Gaming Mouse Pad",
+        "dateOfManufacture":  "2025-05-22",
+        "price":  88.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  149,
+        "name":  "Pro External Hard Drive",
+        "description":  "Technology accessory - Pro model of External Hard Drive",
+        "dateOfManufacture":  "2025-05-25",
+        "price":  95.99,
+        "category":  "storage"
+    },
+    {
+        "id":  150,
+        "name":  "Pro Wireless Earbuds",
+        "description":  "Technology accessory - Pro model of Wireless Earbuds",
+        "dateOfManufacture":  "2025-05-28",
+        "price":  102.99,
+        "category":  "audio"
+    },
+    {
+        "id":  151,
+        "name":  "Pro Webcam",
+        "description":  "Technology accessory - Pro model of Webcam",
+        "dateOfManufacture":  "2025-05-31",
+        "price":  109.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  152,
+        "name":  "Pro USB Flash Drive",
+        "description":  "Technology accessory - Pro model of USB Flash Drive",
+        "dateOfManufacture":  "2025-06-03",
+        "price":  116.99,
+        "category":  "storage"
+    },
+    {
+        "id":  153,
+        "name":  "Pro Laptop Stand",
+        "description":  "Technology accessory - Pro model of Laptop Stand",
+        "dateOfManufacture":  "2025-06-06",
+        "price":  123.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  154,
+        "name":  "Pro Display Adapter",
+        "description":  "Technology accessory - Pro model of Display Adapter",
+        "dateOfManufacture":  "2025-06-09",
+        "price":  130.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  155,
+        "name":  "Pro Studio Headphones",
+        "description":  "Technology accessory - Pro model of Studio Headphones",
+        "dateOfManufacture":  "2025-06-12",
+        "price":  137.99,
+        "category":  "audio"
+    },
+    {
+        "id":  156,
+        "name":  "Pro Keyboard Wrist Rest",
+        "description":  "Technology accessory - Pro model of Keyboard Wrist Rest",
+        "dateOfManufacture":  "2025-06-15",
+        "price":  144.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  157,
+        "name":  "Pro Ethernet Adapter",
+        "description":  "Technology accessory - Pro model of Ethernet Adapter",
+        "dateOfManufacture":  "2025-06-18",
+        "price":  21.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  158,
+        "name":  "Pro Portable Microphone",
+        "description":  "Technology accessory - Pro model of Portable Microphone",
+        "dateOfManufacture":  "2025-06-21",
+        "price":  28.99,
+        "category":  "audio"
+    },
+    {
+        "id":  159,
+        "name":  "Pro Memory Card Reader",
+        "description":  "Technology accessory - Pro model of Memory Card Reader",
+        "dateOfManufacture":  "2025-06-24",
+        "price":  35.99,
+        "category":  "storage"
+    },
+    {
+        "id":  160,
+        "name":  "Pro USB-C Cable",
+        "description":  "Technology accessory - Pro model of USB-C Cable",
+        "dateOfManufacture":  "2025-06-27",
+        "price":  42.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  161,
+        "name":  "Max Mechanical Keyboard",
+        "description":  "Technology accessory - Max model of Mechanical Keyboard",
+        "dateOfManufacture":  "2025-06-30",
+        "price":  49.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  162,
+        "name":  "Max Wireless Gaming Mouse",
+        "description":  "Technology accessory - Max model of Wireless Gaming Mouse",
+        "dateOfManufacture":  "2025-07-03",
+        "price":  56.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  163,
+        "name":  "Max USB-C Dock",
+        "description":  "Technology accessory - Max model of USB-C Dock",
+        "dateOfManufacture":  "2025-07-06",
+        "price":  63.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  164,
+        "name":  "Max Noise-Canceling Headset",
+        "description":  "Technology accessory - Max model of Noise-Canceling Headset",
+        "dateOfManufacture":  "2025-07-09",
+        "price":  70.99,
+        "category":  "audio"
+    },
+    {
+        "id":  165,
+        "name":  "Max Portable SSD",
+        "description":  "Technology accessory - Max model of Portable SSD",
+        "dateOfManufacture":  "2025-07-12",
+        "price":  77.99,
+        "category":  "storage"
+    },
+    {
+        "id":  166,
+        "name":  "Max Bluetooth Speaker",
+        "description":  "Technology accessory - Max model of Bluetooth Speaker",
+        "dateOfManufacture":  "2025-07-15",
+        "price":  84.99,
+        "category":  "audio"
+    },
+    {
+        "id":  167,
+        "name":  "Max USB-C Charging Hub",
+        "description":  "Technology accessory - Max model of USB-C Charging Hub",
+        "dateOfManufacture":  "2025-07-18",
+        "price":  91.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  168,
+        "name":  "Max Gaming Mouse Pad",
+        "description":  "Technology accessory - Max model of Gaming Mouse Pad",
+        "dateOfManufacture":  "2025-07-21",
+        "price":  98.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  169,
+        "name":  "Max External Hard Drive",
+        "description":  "Technology accessory - Max model of External Hard Drive",
+        "dateOfManufacture":  "2025-07-24",
+        "price":  105.99,
+        "category":  "storage"
+    },
+    {
+        "id":  170,
+        "name":  "Max Wireless Earbuds",
+        "description":  "Technology accessory - Max model of Wireless Earbuds",
+        "dateOfManufacture":  "2025-07-27",
+        "price":  112.99,
+        "category":  "audio"
+    },
+    {
+        "id":  171,
+        "name":  "Max Webcam",
+        "description":  "Technology accessory - Max model of Webcam",
+        "dateOfManufacture":  "2025-07-30",
+        "price":  119.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  172,
+        "name":  "Max USB Flash Drive",
+        "description":  "Technology accessory - Max model of USB Flash Drive",
+        "dateOfManufacture":  "2025-08-02",
+        "price":  126.99,
+        "category":  "storage"
+    },
+    {
+        "id":  173,
+        "name":  "Max Laptop Stand",
+        "description":  "Technology accessory - Max model of Laptop Stand",
+        "dateOfManufacture":  "2025-08-05",
+        "price":  133.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  174,
+        "name":  "Max Display Adapter",
+        "description":  "Technology accessory - Max model of Display Adapter",
+        "dateOfManufacture":  "2025-08-08",
+        "price":  140.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  175,
+        "name":  "Max Studio Headphones",
+        "description":  "Technology accessory - Max model of Studio Headphones",
+        "dateOfManufacture":  "2025-08-11",
+        "price":  147.99,
+        "category":  "audio"
+    },
+    {
+        "id":  176,
+        "name":  "Max Keyboard Wrist Rest",
+        "description":  "Technology accessory - Max model of Keyboard Wrist Rest",
+        "dateOfManufacture":  "2025-08-14",
+        "price":  24.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  177,
+        "name":  "Max Ethernet Adapter",
+        "description":  "Technology accessory - Max model of Ethernet Adapter",
+        "dateOfManufacture":  "2025-08-17",
+        "price":  31.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  178,
+        "name":  "Max Portable Microphone",
+        "description":  "Technology accessory - Max model of Portable Microphone",
+        "dateOfManufacture":  "2025-08-20",
+        "price":  38.99,
+        "category":  "audio"
+    },
+    {
+        "id":  179,
+        "name":  "Max Memory Card Reader",
+        "description":  "Technology accessory - Max model of Memory Card Reader",
+        "dateOfManufacture":  "2025-08-23",
+        "price":  45.99,
+        "category":  "storage"
+    },
+    {
+        "id":  180,
+        "name":  "Max USB-C Cable",
+        "description":  "Technology accessory - Max model of USB-C Cable",
+        "dateOfManufacture":  "2025-08-26",
+        "price":  52.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  181,
+        "name":  "Elite Mechanical Keyboard",
+        "description":  "Technology accessory - Elite model of Mechanical Keyboard",
+        "dateOfManufacture":  "2025-08-29",
+        "price":  59.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  182,
+        "name":  "Elite Wireless Gaming Mouse",
+        "description":  "Technology accessory - Elite model of Wireless Gaming Mouse",
+        "dateOfManufacture":  "2025-09-01",
+        "price":  66.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  183,
+        "name":  "Elite USB-C Dock",
+        "description":  "Technology accessory - Elite model of USB-C Dock",
+        "dateOfManufacture":  "2025-09-04",
+        "price":  73.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  184,
+        "name":  "Elite Noise-Canceling Headset",
+        "description":  "Technology accessory - Elite model of Noise-Canceling Headset",
+        "dateOfManufacture":  "2025-09-07",
+        "price":  80.99,
+        "category":  "audio"
+    },
+    {
+        "id":  185,
+        "name":  "Elite Portable SSD",
+        "description":  "Technology accessory - Elite model of Portable SSD",
+        "dateOfManufacture":  "2025-09-10",
+        "price":  87.99,
+        "category":  "storage"
+    },
+    {
+        "id":  186,
+        "name":  "Elite Bluetooth Speaker",
+        "description":  "Technology accessory - Elite model of Bluetooth Speaker",
+        "dateOfManufacture":  "2025-09-13",
+        "price":  94.99,
+        "category":  "audio"
+    },
+    {
+        "id":  187,
+        "name":  "Elite USB-C Charging Hub",
+        "description":  "Technology accessory - Elite model of USB-C Charging Hub",
+        "dateOfManufacture":  "2025-09-16",
+        "price":  101.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  188,
+        "name":  "Elite Gaming Mouse Pad",
+        "description":  "Technology accessory - Elite model of Gaming Mouse Pad",
+        "dateOfManufacture":  "2025-09-19",
+        "price":  108.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  189,
+        "name":  "Elite External Hard Drive",
+        "description":  "Technology accessory - Elite model of External Hard Drive",
+        "dateOfManufacture":  "2025-09-22",
+        "price":  115.99,
+        "category":  "storage"
+    },
+    {
+        "id":  190,
+        "name":  "Elite Wireless Earbuds",
+        "description":  "Technology accessory - Elite model of Wireless Earbuds",
+        "dateOfManufacture":  "2025-09-25",
+        "price":  122.99,
+        "category":  "audio"
+    },
+    {
+        "id":  191,
+        "name":  "Elite Webcam",
+        "description":  "Technology accessory - Elite model of Webcam",
+        "dateOfManufacture":  "2025-09-28",
+        "price":  129.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  192,
+        "name":  "Elite USB Flash Drive",
+        "description":  "Technology accessory - Elite model of USB Flash Drive",
+        "dateOfManufacture":  "2025-10-01",
+        "price":  136.99,
+        "category":  "storage"
+    },
+    {
+        "id":  193,
+        "name":  "Elite Laptop Stand",
+        "description":  "Technology accessory - Elite model of Laptop Stand",
+        "dateOfManufacture":  "2025-10-04",
+        "price":  143.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  194,
+        "name":  "Elite Display Adapter",
+        "description":  "Technology accessory - Elite model of Display Adapter",
+        "dateOfManufacture":  "2025-10-07",
+        "price":  20.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  195,
+        "name":  "Elite Studio Headphones",
+        "description":  "Technology accessory - Elite model of Studio Headphones",
+        "dateOfManufacture":  "2025-10-10",
+        "price":  27.99,
+        "category":  "audio"
+    },
+    {
+        "id":  196,
+        "name":  "Elite Keyboard Wrist Rest",
+        "description":  "Technology accessory - Elite model of Keyboard Wrist Rest",
+        "dateOfManufacture":  "2025-10-13",
+        "price":  34.99,
+        "category":  "peripherals"
+    },
+    {
+        "id":  197,
+        "name":  "Elite Ethernet Adapter",
+        "description":  "Technology accessory - Elite model of Ethernet Adapter",
+        "dateOfManufacture":  "2025-10-16",
+        "price":  41.99,
+        "category":  "connectivity"
+    },
+    {
+        "id":  198,
+        "name":  "Elite Portable Microphone",
+        "description":  "Technology accessory - Elite model of Portable Microphone",
+        "dateOfManufacture":  "2025-10-19",
+        "price":  48.99,
+        "category":  "audio"
+    },
+    {
+        "id":  199,
+        "name":  "Elite Memory Card Reader",
+        "description":  "Technology accessory - Elite model of Memory Card Reader",
+        "dateOfManufacture":  "2025-10-22",
+        "price":  55.99,
+        "category":  "storage"
+    },
+    {
+        "id":  200,
+        "name":  "Elite USB-C Cable",
+        "description":  "Technology accessory - Elite model of USB-C Cable",
+        "dateOfManufacture":  "2025-10-25",
+        "price":  62.99,
+        "category":  "connectivity"
+    }
+]

@@ -1,0 +1,23 @@
+
+[
+  {
+    "category": "peripherals",
+    "description": "Keyboards, mice and computer peripherals"
+  },
+  {
+    "category": "connectivity",
+    "description": "Adapters, USB hubs and docks"
+  },
+  {
+    "category": "audio",
+    "description": "Headsets, headphones and speakers"
+  },
+  {
+    "category": "storage",
+    "description": "External drives and storage"
+  },
+  {
+    "category": "no-category",
+    "description": "Uncategorized products"
+  }
+]
