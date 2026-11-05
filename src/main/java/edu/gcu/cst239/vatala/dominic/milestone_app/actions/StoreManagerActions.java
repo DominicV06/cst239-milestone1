@@ -7,7 +7,10 @@ import edu.gcu.cst239.vatala.dominic.milestone_app.models.InventoryItem;
 import edu.gcu.cst239.vatala.dominic.milestone_app.models.Product;
 import edu.gcu.cst239.vatala.dominic.milestone_app.services.InventoryService;
 import edu.gcu.cst239.vatala.dominic.milestone_app.services.StoreFront;
+import edu.gcu.cst239.vatala.dominic.milestone_app.services.FileService;
 import edu.gcu.cst239.vatala.dominic.milestone_app.util.InputUtilities;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Provides inventory-management actions for store managers.
@@ -75,15 +78,17 @@ public class StoreManagerActions {
                     updateProduct();
                     break;
 
+                
                 case 6:
-                    System.out.println(
-                            "Save inventory is not implemented in Milestone 1.");
+                    saveInventory();
                     break;
 
+
+                
                 case 7:
-                    System.out.println(
-                            "Load inventory is not implemented in Milestone 1.");
+                    loadInventory();
                     break;
+
 
                 case 0:
                     exitRequested = true;
@@ -445,4 +450,72 @@ public class StoreManagerActions {
 
         System.out.println();
     }
+
+    
+        /**
+        * Saves all current inventory products to the JSON file.
+        */
+        private void saveInventory() {
+        FileService fileService = new FileService();
+
+        List<Product> products = new ArrayList<>();
+
+        for (InventoryItem item :
+            inventoryService.getAllInventoryItems()) {
+
+        products.add(item.getProduct());
+    }
+
+        try {
+        fileService.saveProducts(products);
+
+        System.out.println(
+            "Successfully saved " + products.size()
+            + " products to JSON.");
+
+    }   catch (IOException | IllegalArgumentException exception) {
+        System.out.println(
+            "Unable to save inventory: "
+            + exception.getMessage());
+    }
+}
+
+
+/**
+ * Loads products from the JSON file and replaces
+ * the current inventory with the loaded products.
+ */
+private void loadInventory() {
+    FileService fileService = new FileService();
+
+    try {
+        // Read and validate the JSON before changing inventory.
+        List<InventoryItem> loadedItems =
+                fileService.loadInventoryItems(10);
+
+        // Replace the existing inventory with loaded data.
+        inventoryService.clearInventory();
+
+        for (InventoryItem item : loadedItems) {
+            if (!inventoryService.addInventoryItem(item)) {
+                throw new IllegalStateException(
+                    "Unable to add loaded product ID: "
+                    + item.getProduct().getId());
+            }
+        }
+
+        System.out.println(
+            "Successfully loaded " + loadedItems.size()
+            + " products from JSON.");
+
+    } catch (IOException | IllegalArgumentException |
+             IllegalStateException exception) {
+
+        System.out.println(
+            "Unable to load inventory: "
+            + exception.getMessage());
+    }
+}
+
+
 }
