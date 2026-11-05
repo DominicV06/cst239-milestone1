@@ -217,5 +217,57 @@ public class FileService {
 
         return inventory;
     }
+
+    
+    /**
+    * Returns the location of the product JSON file.
+    */
+    public Path getProductsPath() {
+    return productsPath;
+        }
+
+
+    /**
+    * Converts a domain Product into a JSON DTO.
+    */
+    public ProductDto mapToDto(Product product) {
+    if (product == null) {
+        throw new IllegalArgumentException(
+            "Product cannot be null.");
+    }
+
+    return new ProductDto(
+        product.getId(),
+        product.getName(),
+        product.getDescription(),
+        product.getDateOfManufacture().toString(),
+        product.getPrice(),
+        product.getCategory()
+    );
+    }
+
+    
+/**
+ * Saves the current Product objects to the JSON file.
+ */
+public void saveProducts(List<Product> products)
+        throws IOException {
+
+    if (products == null) {
+        throw new IllegalArgumentException(
+            "Product list cannot be null.");
+    }
+
+    List<ProductDto> productDtos = new ArrayList<>();
+
+    for (Product product : products) {
+        productDtos.add(mapToDto(product));
+    }
+
+    mapper.writerWithDefaultPrettyPrinter()
+          .writeValue(productsPath.toFile(), productDtos);
+}
+
+
 }
 
