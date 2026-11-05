@@ -247,8 +247,11 @@ public class FileService {
     }
 
     
+
 /**
- * Saves the current Product objects to the JSON file.
+ * Saves products to JSON after validating their data.
+ * Invalid categories and duplicate IDs are rejected
+ * before the existing file is overwritten.
  */
 public void saveProducts(List<Product> products)
         throws IOException {
@@ -258,15 +261,48 @@ public void saveProducts(List<Product> products)
             "Product list cannot be null.");
     }
 
-    List<ProductDto> productDtos = new ArrayList<>();
+    // Load the valid categories from categories.json.
+    List<ProductCategoryDto> categories = loadCategories();
 
-    for (Product product : products) {
-        productDtos.add(mapToDto(product));
+    Set<String> validCategories = new HashSet<>();
+
+    for (ProductCategoryDto category : categories) {
+        validCategories.add(category.category());
     }
 
+    List<ProductDto> productDtos = new ArrayList<>();
+    Set<Integer> productIds = new HashSet<>();
+
+    for (Product product : products) {
+
+        ProductDto dto = mapToDto(product);
+
+        // Reject duplicate product IDs.
+        if (!productIds.add(dto.id())) {
+            throw new IllegalArgumentException(
+                "Duplicate product ID: " + dto.id());
+        }
+
+        // Reject categories that are not defined.
+        if (dto.category() == null ||
+                !validCategories.contains(dto.category())) {
+
+            throw new IllegalArgumentException(
+                "Unknown category for product ID: "
+                + dto.id());
+        }
+
+        // Validate product data and manufacture date.
+        mapToProduct(dto, validCategories);
+
+        productDtos.add(dto);
+    }
+
+    // Write only after every product has passed validation.
     mapper.writerWithDefaultPrettyPrinter()
           .writeValue(productsPath.toFile(), productDtos);
 }
+
 
 
 }
